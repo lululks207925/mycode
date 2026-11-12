@@ -1,22 +1,26 @@
-/*写出100~200的所有素数*/
+/*写出100~200的所有素数(素数从2开始判断)*/
 #include<stdio.h>
-#include<math.h>
+
 int main()
-{int n,x,flag;
+{
+    int n,t,flag;
+
     for(n=100;n<=200;n++)
-{flag=1;
-for(x=2;x<=sqrt(n);x++)
-{if(n%x==0)
-    flag=0;
+    {
+        flag=1;  // 假设n是素数
 
-}
+        for(t=2;t*t<=n;t++)
+        {
+            if(n%t==0)
+            {
+                flag=0;  // 找到因数，不是素数
+                break;
+            }
+        }
 
-
-if(flag==1)
-printf("%d\n",n);
-}
-
-
+        if(flag==1)
+            printf("%d\n",n);
+    }
 
     return 0;
 }
